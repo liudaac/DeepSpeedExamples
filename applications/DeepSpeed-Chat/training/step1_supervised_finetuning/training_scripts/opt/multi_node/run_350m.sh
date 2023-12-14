@@ -3,6 +3,9 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # DeepSpeed Team
+export NCCL_SOCKET_IFNAME=enp5s0
+export NCCL_DEBUG=INFO
+
 OUTPUT=$1
 ZERO_STAGE=$2
 if [ "$OUTPUT" == "" ]; then
