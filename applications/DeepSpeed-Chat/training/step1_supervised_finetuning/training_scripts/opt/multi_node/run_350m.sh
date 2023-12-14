@@ -16,7 +16,7 @@ if [ "$ZERO_STAGE" == "" ]; then
 fi
 mkdir -p $OUTPUT
 
-deepspeed --num_nodes 2 --num_gpus 1 --master_port 12345 --hostfile hostfile --master_addr 10.234.128.136 main.py \
+deepspeed --xpu_backend gloo --num_nodes 2 --num_gpus 1 --master_port 12345 --hostfile hostfile --master_addr 10.234.128.136 main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --model_name_or_path facebook/opt-350m \
@@ -33,7 +33,6 @@ deepspeed --num_nodes 2 --num_gpus 1 --master_port 12345 --hostfile hostfile --m
    --gradient_checkpointing \
    --zero_stage $ZERO_STAGE \
    --lora_dim 128 \
-   --xpu_backend gloo \
    --lora_module_name decoder.layers. \
    --deepspeed \
    --output_dir $OUTPUT \
