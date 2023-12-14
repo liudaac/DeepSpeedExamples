@@ -13,6 +13,8 @@ if [ "$ZERO_STAGE" == "" ]; then
 fi
 mkdir -p $OUTPUT
 
+source activate ds
+
 python -m torch.distributed.run --nproc_per_node=1 --nnode=2 --node_rank=1 --master_addr=10.234.128.136 --master_port=9901 main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
