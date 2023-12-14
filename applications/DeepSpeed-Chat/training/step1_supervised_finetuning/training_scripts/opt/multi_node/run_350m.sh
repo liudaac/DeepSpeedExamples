@@ -12,11 +12,11 @@ if [ "$OUTPUT" == "" ]; then
     OUTPUT=./output
 fi
 if [ "$ZERO_STAGE" == "" ]; then
-    ZERO_STAGE=1
+    ZERO_STAGE=2
 fi
 mkdir -p $OUTPUT
 
-deepspeed --num_nodes 2 --num_gpus 2 --master_port 12345 --hostfile hostfile --master_addr 10.234.128.136 main.py \
+deepspeed --num_nodes 2 --num_gpus 1 --master_port 12345 --hostfile hostfile --master_addr 10.234.128.136 main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --data_split 2,4,4 \
    --model_name_or_path facebook/opt-350m \
