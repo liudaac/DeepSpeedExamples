@@ -33,6 +33,7 @@ deepspeed --num_nodes 2 --num_gpus 1 --master_port 12345 --hostfile hostfile --m
    --gradient_checkpointing \
    --zero_stage $ZERO_STAGE \
    --lora_dim 128 \
+   --xpu_backend gloo \
    --lora_module_name decoder.layers. \
    --deepspeed \
    --output_dir $OUTPUT \
