@@ -19,7 +19,7 @@ mkdir -p $OUTPUT
 deepspeed --num_nodes 2 --num_gpus 1 --master_port 12345 --hostfile hostfile --master_addr 10.234.128.136 main.py \
    --data_path Dahoas/rm-static Dahoas/full-hh-rlhf Dahoas/synthetic-instruct-gptj-pairwise yitingxie/rlhf-reward-datasets \
    --model_name_or_path facebook/opt-350m \
-   --per_device_train_batch_size 16 \
+   --per_device_train_batch_size 4 \
    --per_device_eval_batch_size 4 \
    --max_seq_len 512 \
    --learning_rate 1e-4 \
