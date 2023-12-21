@@ -24,7 +24,7 @@ deepspeed --num_nodes 2 --num_gpus 1 --master_port 12345 --hostfile hostfile --m
    --learning_rate 1e-4 \
    --weight_decay 0.1 \
    --num_train_epochs 1  \
-   --gradient_accumulation_steps 32 \
+   --gradient_accumulation_steps 128 \
    --lr_scheduler_type cosine \
    --num_warmup_steps 0 \
    --seed 1234 \
