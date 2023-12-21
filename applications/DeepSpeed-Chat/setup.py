@@ -21,7 +21,7 @@ setuptools.setup(
     packages=setuptools.find_packages(include=['dschat']),
     install_requires=[
         "datasets>=2.8.0", "sentencepiece>=0.1.97", "protobuf==3.20.3",
-        "accelerate>=0.15.0", "torch==2.0.1", "deepspeed==0.9.0",
+        "accelerate>=0.15.0", "torch==2.0.1", "deepspeed>=0.9.2",
         "transformers>=4.31.0,!=4.33.2", "tensorboard"
     ],
     extras_require={
