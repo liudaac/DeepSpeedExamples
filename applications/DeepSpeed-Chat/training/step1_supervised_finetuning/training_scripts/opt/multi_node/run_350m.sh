@@ -8,15 +8,19 @@ export NCCL_DEBUG=INFO
 
 OUTPUT=$1
 ZERO_STAGE=$2
+PORT=$3
 if [ "$OUTPUT" == "" ]; then
     OUTPUT=./output
 fi
 if [ "$ZERO_STAGE" == "" ]; then
     ZERO_STAGE=0
 fi
+if [ "$PORT" == "" ]; then
+    PORT=12345
+fi
 mkdir -p $OUTPUT
 
-deepspeed --num_nodes 2 --num_gpus 1 --master_port 12345 --hostfile hostfile --master_addr 10.234.128.136 main.py \
+deepspeed --num_nodes 2 --num_gpus 1 --master_port $PORT --hostfile hostfile --master_addr 10.234.128.136 main.py \
    --model_name_or_path facebook/opt-350m \
    --per_device_train_batch_size 4 \
    --per_device_eval_batch_size 4 \
